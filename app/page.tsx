@@ -158,7 +158,7 @@ export default function Home() {
               <h2 className="font-serif text-2xl md:text-3xl text-[#422E26] mb-2">
                 Itinerario
               </h2>
-              <p className="text-[#8C7B70] text-sm">Cómo será la noche</p>
+              <p className="text-[#8C7B70] text-sm">Cómo será la tarde</p>
             </div>
           </FadeInSection>
 
@@ -178,7 +178,7 @@ export default function Home() {
                 description: "El momento de conocer BeeGlow",
               },
               {
-                time: "10:00 pm",
+                time: "19:00 pm",
                 title: "Picoteo y cierre",
                 description: "Celebración y momentos inolvidables",
               },
