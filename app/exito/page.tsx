@@ -1,9 +1,18 @@
 import { CheckCircle2 } from "lucide-react";
 import Link from "next/link";
+import CelebrationConfetti from "@/components/celebration-confetti";
 
-export default function ExitoPage() {
+export default async function ExitoPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ asistira?: string }>;
+}) {
+  const { asistira } = await searchParams;
+  const mostrarConfeti = asistira === "true";
+
   return (
     <main className="min-h-screen flex items-center justify-center px-6 bg-[#EDE2D2]">
+      {mostrarConfeti && <CelebrationConfetti />}
       <div className="max-w-lg mx-auto text-center">
         <div className="mb-8 flex justify-center">
           <div className="w-20 h-20 rounded-full bg-[#6A704D]/10 flex items-center justify-center">

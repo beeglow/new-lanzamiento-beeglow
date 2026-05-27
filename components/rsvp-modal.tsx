@@ -43,7 +43,11 @@ export default function RsvpModal({ isOpen, onClose }: RsvpModalProps) {
       }
 
       onClose();
-      router.push("/exito");
+      if (formData.asistira) {
+        router.push("/exito?asistira=true");
+      } else {
+        router.push("/lamentamos");
+      }
     } catch {
       setError("Ocurrió un error inesperado. Por favor intenta de nuevo.");
     } finally {
