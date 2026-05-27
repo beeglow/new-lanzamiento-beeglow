@@ -130,7 +130,7 @@ export default async function ExitoPage({
                 <div className="w-8 h-8 rounded-full bg-[#6A704D]/10 flex items-center justify-center flex-shrink-0">
                   <Calendar size={16} className="text-[#6A704D]" />
                 </div>
-                <span className="text-[#422E26] font-medium text-sm">29 de mayo de 2026</span>
+                <span className="text-[#422E26] font-medium text-sm">Viernes 29 de mayo de 2026</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full bg-[#6A704D]/10 flex items-center justify-center flex-shrink-0">
@@ -138,11 +138,14 @@ export default async function ExitoPage({
                 </div>
                 <span className="text-[#422E26] font-medium text-sm">18:00 hs</span>
               </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-[#6A704D]/10 flex items-center justify-center flex-shrink-0">
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-full bg-[#6A704D]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <MapPin size={16} className="text-[#6A704D]" />
                 </div>
-                <span className="text-[#422E26] font-medium text-sm">General Pico, La Pampa</span>
+                <div className="flex flex-col">
+                  <span className="text-[#422E26] font-medium text-sm">Polo Científico Tecnológico (Agencia CITIA)</span>
+                  <span className="text-[#8C7B70] text-xs">C. 29 & Calle 32, General Pico, La Pampa</span>
+                </div>
               </div>
             </div>
 
