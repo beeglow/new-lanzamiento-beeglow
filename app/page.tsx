@@ -53,7 +53,7 @@ export default function Home() {
           <FadeInSection delay={300}>
             <p className="text-lg md:text-xl text-[#8C7B70] max-w-2xl mx-auto leading-relaxed mb-12">
               Te invitamos a ser parte del momento en que todo comienza.
-              Una noche para descubrir lo que viene.
+              Una tarde para descubrir lo que viene.
             </p>
           </FadeInSection>
 
@@ -178,7 +178,7 @@ export default function Home() {
                 description: "El momento de conocer BeeGlow",
               },
               {
-                time: "19:00 pm",
+                time: "07:00 pm",
                 title: "Picoteo y cierre",
                 description: "Celebración y momentos inolvidables",
               },
