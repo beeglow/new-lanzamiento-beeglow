@@ -166,6 +166,7 @@ export default async function AdminPage() {
                       </td>
                       <td className="px-6 py-4 text-[#8C7B70] text-sm hidden md:table-cell">
                         {new Date(inv.created_at).toLocaleDateString("es-AR", {
+                          timeZone: "America/Argentina/Buenos_Aires",
                           day: "numeric",
                           month: "short",
                           year: "numeric",
