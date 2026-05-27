@@ -6,6 +6,80 @@ import Countdown from "@/components/countdown";
 import RsvpModal from "@/components/rsvp-modal";
 import FadeInSection from "@/components/fade-in-section";
 
+function BeeIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="16" cy="16" rx="10" ry="7" fill="#D4AF37" fillOpacity="0.35" />
+      <ellipse cx="32" cy="16" rx="10" ry="7" fill="#D4AF37" fillOpacity="0.25" />
+      <ellipse cx="24" cy="28" rx="11" ry="13" fill="#E8A824" />
+      <path d="M16 23h16" stroke="#422E26" strokeWidth="3" strokeLinecap="round" />
+      <path d="M15 29h18" stroke="#422E26" strokeWidth="3" strokeLinecap="round" />
+      <path d="M16 35h16" stroke="#422E26" strokeWidth="3" strokeLinecap="round" />
+      <circle cx="24" cy="14" r="6" fill="#E8A824" />
+      <circle cx="22" cy="13" r="1.2" fill="#422E26" />
+      <circle cx="26" cy="13" r="1.2" fill="#422E26" />
+      <path d="M21 9c-1-3-3-4-3-4" stroke="#422E26" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M27 9c1-3 3-4 3-4" stroke="#422E26" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function HoneycombBackground() {
+  return (
+    <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="honeycomb-home" x="0" y="0" width="56" height="100" patternUnits="userSpaceOnUse">
+          <path d="M28 0L56 16.5v33L28 66 0 49.5v-33L28 0z" fill="none" stroke="#6A704D" strokeWidth="1.5" />
+          <path d="M28 100L56 83.5v-33L28 34 0 50.5v33L28 100z" fill="none" stroke="#6A704D" strokeWidth="1.5" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#honeycomb-home)" />
+    </svg>
+  );
+}
+
+function PollenParticles() {
+  return (
+    <>
+      {[
+        { top: "20%", left: "15%", size: 5, delay: "0s", duration: "5s" },
+        { top: "40%", left: "80%", size: 4, delay: "1.2s", duration: "6s" },
+        { top: "60%", left: "10%", size: 3, delay: "0.5s", duration: "4s" },
+        { top: "80%", left: "70%", size: 4, delay: "2s", duration: "5.5s" },
+        { top: "30%", left: "50%", size: 3, delay: "0.8s", duration: "4.5s" },
+        { top: "70%", left: "30%", size: 5, delay: "1.5s", duration: "6s" },
+      ].map((p, i) => (
+        <div
+          key={i}
+          className="absolute rounded-full pointer-events-none animate-pulse"
+          style={{
+            top: p.top,
+            left: p.left,
+            width: p.size,
+            height: p.size,
+            backgroundColor: "#D4AF37",
+            opacity: 0.3,
+            animationDelay: p.delay,
+            animationDuration: p.duration,
+          }}
+        />
+      ))}
+    </>
+  );
+}
+
+function SectionDivider() {
+  return (
+    <div className="flex items-center justify-center gap-3 py-8 opacity-30">
+      <div className="h-px w-12 bg-[#6A704D]" />
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-[#6A704D]">
+        <path d="M12 2l10.39 6v12L12 26 1.61 20V8L12 2z" fill="currentColor" opacity="0.5" />
+      </svg>
+      <div className="h-px w-12 bg-[#6A704D]" />
+    </div>
+  );
+}
+
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -20,6 +94,14 @@ export default function Home() {
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#6A704D]/15 rounded-full blur-[100px]" />
           <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#A6777F]/10 rounded-full blur-[80px]" />
+        </div>
+
+        {/* Floating pollen particles */}
+        <PollenParticles />
+
+        {/* Floating decorative bee */}
+        <div className="absolute top-16 right-8 md:top-24 md:right-20 opacity-15 pointer-events-none rotate-12 animate-bounce" style={{ animationDuration: "4s" }}>
+          <BeeIcon className="w-14 h-14 md:w-20 md:h-20" />
         </div>
 
         {/* Content */}
@@ -77,12 +159,17 @@ export default function Home() {
       </section>
 
       {/* Countdown Section */}
-      <section className="py-20 md:py-32 px-6">
-        <div className="max-w-3xl mx-auto">
+      <section className="relative py-20 md:py-32 px-6 overflow-hidden">
+        <HoneycombBackground />
+        <div className="relative max-w-3xl mx-auto">
           <FadeInSection>
-            <h2 className="text-center font-serif text-2xl md:text-3xl text-[#422E26] mb-2">
-              Nos vemos en
-            </h2>
+            <div className="flex items-center justify-center gap-3 mb-2">
+              <BeeIcon className="w-6 h-6 opacity-40" />
+              <h2 className="text-center font-serif text-2xl md:text-3xl text-[#422E26]">
+                Nos vemos en
+              </h2>
+              <BeeIcon className="w-6 h-6 opacity-40 scale-x-[-1]" />
+            </div>
             <p className="text-center text-[#8C7B70] text-sm mb-12">
               29 de mayo de 2026 a las 18:00 hs
             </p>
@@ -91,15 +178,19 @@ export default function Home() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* Ubicación Section */}
-      <section className="py-20 md:py-32 px-6 bg-[#F5EDE3]/50">
-        <div className="max-w-4xl mx-auto">
+      <section className="relative py-20 md:py-32 px-6 bg-[#F5EDE3]/50 overflow-hidden">
+        <HoneycombBackground />
+        <div className="relative max-w-4xl mx-auto">
           <FadeInSection>
             <div className="flex items-center gap-3 justify-center mb-2">
               <MapPin className="text-[#6A704D]" size={24} />
               <h2 className="font-serif text-2xl md:text-3xl text-[#422E26]">
                 Ubicación
               </h2>
+              <BeeIcon className="w-5 h-5 opacity-30" />
             </div>
             <p className="text-center text-[#6A704D] text-sm uppercase tracking-widest mb-12">
               General Pico, La Pampa
@@ -150,11 +241,18 @@ export default function Home() {
       </section>
 
       {/* Itinerario Section */}
-      <section className="py-20 md:py-32 px-6">
+      <section className="py-20 md:py-32 px-6 relative overflow-hidden">
+        <div className="absolute top-10 right-10 opacity-10 pointer-events-none">
+          <BeeIcon className="w-20 h-20 rotate-12" />
+        </div>
         <div className="max-w-2xl mx-auto">
           <FadeInSection>
             <div className="text-center mb-16">
-              <Clock className="text-[#6A704D] mx-auto mb-4" size={28} />
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <div className="h-px w-8 bg-[#6A704D]/30" />
+                <Clock className="text-[#6A704D]" size={28} />
+                <div className="h-px w-8 bg-[#6A704D]/30" />
+              </div>
               <h2 className="font-serif text-2xl md:text-3xl text-[#422E26] mb-2">
                 Itinerario
               </h2>
@@ -185,9 +283,12 @@ export default function Home() {
             ].map((item, index) => (
               <FadeInSection key={item.title} delay={index * 150}>
                 <div className="relative flex gap-6 mb-12 last:mb-0">
-                  {/* Dot */}
-                  <div className="relative z-10 flex-shrink-0 w-14 h-14 rounded-full bg-[#F5EDE3] border-2 border-[#6A704D] flex items-center justify-center">
-                    <span className="text-xs font-semibold text-[#6A704D]">
+                  {/* Hexagonal dot */}
+                  <div className="relative z-10 flex-shrink-0 flex items-center justify-center">
+                    <svg width="56" height="64" viewBox="0 0 56 64" className="absolute">
+                      <path d="M28 0L53.98 16v32L28 64 2.02 48V16L28 0z" fill="#F5EDE3" stroke="#6A704D" strokeWidth="2" />
+                    </svg>
+                    <span className="relative z-10 text-xs font-semibold text-[#6A704D] w-14 h-14 flex items-center justify-center">
                       {item.time.split(" ")[0]}
                     </span>
                   </div>
@@ -211,10 +312,21 @@ export default function Home() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* RSVP CTA Section */}
-      <section className="py-20 md:py-32 px-6 bg-gradient-to-b from-[#F5EDE3]/50 to-[#EDE2D2]">
-        <div className="max-w-2xl mx-auto text-center">
+      <section className="relative py-20 md:py-32 px-6 bg-gradient-to-b from-[#F5EDE3]/50 to-[#EDE2D2] overflow-hidden">
+        <HoneycombBackground />
+        <div className="absolute top-8 left-8 opacity-10 pointer-events-none -rotate-12">
+          <BeeIcon className="w-16 h-16 md:w-24 md:h-24" />
+        </div>
+        <div className="relative max-w-2xl mx-auto text-center">
           <FadeInSection>
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="h-px w-10 bg-[#6A704D]/20" />
+              <BeeIcon className="w-8 h-8 opacity-30" />
+              <div className="h-px w-10 bg-[#6A704D]/20" />
+            </div>
             <h2 className="font-serif text-3xl md:text-4xl text-[#422E26] mb-4">
               ¿Nos acompañás?
             </h2>
@@ -233,8 +345,18 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-6 border-t border-[#6A704D]/10">
-        <div className="max-w-4xl mx-auto text-center">
+      <footer className="relative py-16 px-6 border-t border-[#6A704D]/10 overflow-hidden">
+        <div className="absolute bottom-0 left-0 right-0 flex justify-center opacity-[0.04] pointer-events-none">
+          <svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+            <path d="M40 10L60 0l20 10 20-10 20 10 20-10 20 10v30l-20 10-20-10-20 10-20-10-20 10-20-10V10z" fill="#6A704D" />
+          </svg>
+        </div>
+        <div className="relative max-w-4xl mx-auto text-center">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="h-px w-16 bg-[#6A704D]/20" />
+            <BeeIcon className="w-6 h-6 opacity-40" />
+            <div className="h-px w-16 bg-[#6A704D]/20" />
+          </div>
           <p className="font-serif text-2xl text-[#6A704D] mb-4">BeeGlow</p>
           <a
             href="https://www.somosbeeglow.com"
